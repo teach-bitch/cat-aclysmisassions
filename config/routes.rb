@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :facturations
+    resources :charges
   resources :baskets
   resources :categories
   resources :products
