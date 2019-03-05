@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :facturations
-    resources :charges
   resources :baskets
+    resources :charges
   resources :categories
   resources :products
   devise_for :users
