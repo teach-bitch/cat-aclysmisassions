@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>client : <%= @user.email %> </h1>
+    <%= puts "je rentre dans admin_bill_email.html.erb apres @user.email" %>
+    <p>
+      Viens d'acheter les produits suivant : <%= @facturation.basket.product.title %> x <%= @facturation.basket.quantity %> .
+    </p>
+      <%= puts "je rentre dans admin_bill_email.html.erb apres @facturation.basket.product.title" %>
+    <p>
+      pour la somme de : <%= @facturation.price %> €.
+            <%= puts "je rentre dans admin_bill_email.html.erb apres @facturation.price" %>
+    </p>
+    <p>
+      Pour accéder à ton espace admin, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur catpeach.fr !</p>
+  </body>
+</html>

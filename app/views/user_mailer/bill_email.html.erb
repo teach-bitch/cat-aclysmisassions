@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @user.email %> Merci pour cet achat !</h1>
+    <%= puts "je rentre dans bill_email.html.erb apres @user.email" %>
+    <p>
+      Tu as fait l'achat des produits suivant : <%= @facturation.basket.product.title %> x <%= @facturation.basket.quantity %> .
+    </p>
+      <%= puts "je rentre dans bill_email.html.erb apres @facturation.basket.product.title" %>
+    <p>
+      pour la somme de : <%= @facturation.price %> €.
+            <%= puts "je rentre dans bill_email.html.erb apres @facturation.price" %>
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur catpeach.fr !</p>
+  </body>
+</html>

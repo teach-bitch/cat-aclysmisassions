@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "facturations/edit", type: :view do
   before(:each) do
     @facturation = assign(:facturation, Facturation.create!(
-      :price => 1
+      :basket_id => 1,
+      :price => 19.99
     ))
   end
 

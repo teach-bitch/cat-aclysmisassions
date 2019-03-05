@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :facturation do
-    price { 1 }
+    basket_id { FactoryBot.create(:basket).id }
+    price { rand(1.0..1337.0).round(2) }
   end
 end

@@ -4,16 +4,17 @@ RSpec.describe "categories/index", type: :view do
   before(:each) do
     assign(:categories, [
       Category.create!(
-        :title => "Title"
+        :title => "Charme"
       ),
       Category.create!(
-        :title => "Title"
+        :title => "Comique"
       )
     ])
   end
 
   it "renders a list of categories" do
     render
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
+    assert_select "tr>td", :text => "Charme".to_s, :count => 1
+    assert_select "tr>td", :text => "Comique".to_s, :count => 1
   end
 end

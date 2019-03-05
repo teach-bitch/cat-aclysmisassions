@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "baskets/new", type: :view do
   before(:each) do
     assign(:basket, Basket.new(
+      :user_id => 2,
+      :product_id => 4,
       :quantity => 1
     ))
   end

@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "baskets/edit", type: :view do
   before(:each) do
     @basket = assign(:basket, Basket.create!(
+      :user_id => 1,
+      :product_id => 1,
       :quantity => 1
     ))
   end

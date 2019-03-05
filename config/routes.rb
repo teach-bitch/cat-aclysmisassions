@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :line_items
+  root "home#index"
+
   resources :facturations
     resources :charges
   resources :baskets

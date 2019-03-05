@@ -1,26 +1,43 @@
-<h2>Log in</h2>
+<body class="login-page">
+        <div class="page-header" filter-color="orange">
+        <div class="page-header-image" style="background-image:url(<%= asset_url 'devise/login_peepoohome' %>)"></div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-5 ml-auto mr-auto">
+                    <div class="card card-login card-plain">
+                        <form class="form" method="" action="">
+                            <div class="card-header text-center">
+                                <div class="">
+                                    <img src="<%= asset_url 'devise/SFF' %>" alt="SuperFuckFriends">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                <div class="input-group form-group-no-border input-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                                    </div>
+                                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+                                </div>
+                                <div class="input-group form-group-no-border input-lg">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
+                                    </div>
+                                    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Mot de passe..." %>
+                                </div>
+                            </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                            <div class="card-footer text-center">
+                                    <%= f.submit "Connexion", class: "btn btn-primary btn-round btn-lg btn-block" %>
+                            </div>
+                              <% end %>
+                              <h6>
+                                <%= render "devise/shared/links" %>
+                              </h6>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>

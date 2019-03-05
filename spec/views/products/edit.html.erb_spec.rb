@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe "products/edit", type: :view do
   before(:each) do
     @product = assign(:product, Product.create!(
-      :title => "MyString",
-      :description => "MyText",
-      :price => 1.5,
-      :quantity => 1,
-      :reference => ""
+      :category_id => 3,
+      :title => "Réplique presque réelle de Tomb Raider",
+      :description => "Nous savons que vous savez ce que vous allez en faire mais vous ne saviez peut être pas que nous savions que vous saviez. Produit très en tendance chez les hommes",
+      :price => 69,
+      :quantity => 69,
+      :reference => "X-SHOGUN-TONIGHT-69-XXX"
     ))
   end
 

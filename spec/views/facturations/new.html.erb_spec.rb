@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "facturations/new", type: :view do
   before(:each) do
     assign(:facturation, Facturation.new(
-      :price => 1
+      :basket_id => 10,
+      :price => 555
     ))
   end
 

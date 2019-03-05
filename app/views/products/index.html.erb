@@ -1,5 +1,158 @@
 <p id="notice"><%= notice %></p>
 
+<div class="main">
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">Trouvez tout ce dont vous avez besoin</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="collapse-panel">
+                        <div class="card-body">
+                            <div class="card card-refine card-plain">
+                                <h4 class="card-title">
+                                    Affiner la recherche
+                                    <button class="btn btn-default btn-icon btn-neutral pull-right" rel="tooltip" title="Reset Filter">
+                                        <i class="arrows-1_refresh-69 now-ui-icons"></i>
+                                    </button>
+                                </h4>
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h6 class="mb-0">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Fourchatte de prix
+                                            <i class="now-ui-icons arrows-1_minimal-down"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="card-body">
+                                        <span id="price-left" class="price-left pull-left" data-currency="&euro;">100</span>
+                                        <span id="price-right" class="price-right pull-right" data-currency="&euro;">850</span>
+                                        <div class="clearfix mb-2"></div>
+                                        <div id="sliderRefine" class="slider slider-refine"></div>
+                                    </div>
+                                </div>
+                            </div>
+                          <!-- Checkbox 'Marques' -->
+                            <div class="card card-refine card-plain">
+                                <div class="card-header" role="tab" id="headingTwo">
+                                    <h6 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Marque
+                                            <i class="now-ui-icons arrows-1_minimal-down"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="card-body">
+                                        <div class="checkbox">
+                                            <input id="checkbox_brand" type="checkbox">
+                                            <label for="checkbox_brand">
+                                                Toutes <3
+                                            </label>
+                                        </div>
+                                      <!-- Boucle pour les marques -->
+                                        <div class="checkbox">
+                                            <input id="checkbox_" type="checkbox">
+                                            <label for="checkbox_">
+                                                <!-- Noms des marques -->
+                                            </label>
+                                        </div>
+                                      <!-- Fin de boucle -->
+                                    </div>
+                                </div>
+                            </div>
+                          <!-- Fin Checkbox 'Marques' -->
+                          <!-- Checkbox 'Designer' -->
+                            <div class="card card-refine card-plain">
+                                <div class="card-header" role="tab" id="headingThree">
+                                    <h6 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Designer
+                                            <i class="now-ui-icons arrows-1_minimal-down"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="card-body">
+                                        <div class="checkbox">
+                                            <input id="checkbox9" type="checkbox">
+                                            <label for="checkbox9">
+                                                All
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          <!-- Fin Checkbox 'Designer' -->
+                          <!-- Checkbox 'Catégories' -->
+                            <div class="card card-refine card-plain">
+                                <div class="card-header" role="tab" id="headingfour">
+                                    <h6 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                            Cat-égories
+                                            <i class="now-ui-icons arrows-1_minimal-down"></i>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapsefour" class="collapse" role="tabpanel" aria-labelledby="headingfour">
+                                    <div class="card-body">
+                                        <div class="checkbox">
+                                            <input id="checkbox_cat" type="checkbox">
+                                            <label for="checkbox_cat">
+                                                Toutes <3
+                                            </label>
+                                        </div>
+                                      <% @categories.each do |category| %>
+                                        <div class="checkbox">
+                                            <input id="checkbox_<%=category.id%>" type="checkbox">
+                                            <label for="checkbox_<%=category.id%>">
+                                                <%= category.title %>
+                                            </label>
+                                        </div>
+                                      <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                          <!-- Fin Checkbox 'Catégories' -->
+                        </div>
+                    </div>
+                </div>
+              <!-- Carte Produit -->
+                <div class="col-md-9">
+                    <div class="row">
+                      <% @products.each do |product| %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-product card-plain">
+                                <div class="card-image">
+                                    <a href="/products/<%= product.id %>">
+                                        <img src="http://www.kittycatconnection.org/uploads/1/6/8/9/16894946/header_images/1532312571.jpg" alt="..." />
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="/products/<%= product.id %>">
+                                        <h4 class="card-title"><%= product.title %></h4>
+                                    </a>
+                                    <p class="card-description">
+                                        <%= product.description %>
+                                    </p>
+                                    <div class="card-footer">
+                                        <div class="price-container">
+                                            <span class="price"><%= product.price %> €</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      <% end %>
+                    </div>
+                </div>
+              <!-- Fin de la Carte Produit -->
+            </div>
+        </div>
+    </div>
+    <!-- section -->
+
+
 <h1>Products</h1>
 
 <table>
@@ -25,6 +178,7 @@
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Ajouter au panier', line_items_path(product_id: product) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,3 +187,30 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var slider2 = document.getElementById('sliderRefine');
+
+        noUiSlider.create(slider2, {
+            start: [69, 666],
+            connect: true,
+            range: {
+                'min': [30],
+                'max': [900]
+            }
+        });
+
+        var limitFieldMin = document.getElementById('price-left');
+        var limitFieldMax = document.getElementById('price-right');
+
+        slider2.noUiSlider.on('update', function(values, handle) {
+            if (handle) {
+                limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
+            } else {
+                limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
+            }
+        });
+    });
+</script>
