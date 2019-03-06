@@ -6,94 +6,99 @@
 
   <div class="row">
     <div class="col-md-12">
-        <h3>
-            <small>Mon panier</small>
-        </h3>
+      <h3>
+        <small>Mon panier</small>
+      </h3>
     </div>
     <div class="col-md-12">
-        <div class="card card-plain">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-shopping">
-                        <thead class="">
-                            <th class="text-center">
-                            </th>
-                            <th>
-                                Produit
-                            </th>
-                            <th>
-                                Marque
-                            </th>
-                            <th class="text-right">
-                                Prix
-                            </th>
-                            <th class="text-right">
-                                Quantité
-                            </th>
-                            <th class="text-right">
-                                Montant
-                            </th>
-                        </thead>
-                        <tbody>
-                          <% @basket.line_items.each do |item| %>
-                            <tr>
-                                <td>
-                                    <div class="img-container">
-                                        <img src="http://www.kittycatconnection.org/uploads/1/6/8/9/16894946/header_images/1532312571.jpg" alt="...">
-                                    </div>
-                                </td>
-                                <td class="td-name">
-                                    <a href="#jacket"><%= item.product.title %></a>
-                                    <br />
-                                    <small>Réf : <%= item.product.reference %></small>
-                                </td>
-                                <td>
-                                    <%= item.product.brand %>
-                                </td>
-                                <td class="td-number">
-                                    <%= item.product.price %><small>€</small>
-                                </td>
-                                <td class="td-number">
+      <div class="card card-plain">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-shopping">
+              <thead class="">
+                <th class="text-center">
+                </th>
+                <th>
+                  Produit
+                </th>
+                <th>
+                  Marque
+                </th>
+                <th class="text-right">
+                  Prix
+                </th>
+                <th class="text-right">
+                  Quantité
+                </th>
+                <th class="text-right">
+                  Montant
+                </th>
+              </thead>
+              <tbody>
+                <% @basket.line_items.each do |item| %>
+                <tr>
+                  <td>
+                    <div class="img-container">
+                      <img src="http://www.kittycatconnection.org/uploads/1/6/8/9/16894946/header_images/1532312571.jpg" alt="...">
+                    </div>
+                  </td>
+                  <td class="td-name">
+                    <a href="#jacket"><%= item.product.title %></a>
+                    <br />
+                    <small>Réf : <%= item.product.reference %></small>
+                  </td>
+                  <td>
+                    <%= item.product.brand %>
+                  </td>
+                  <td class="td-number">
+                    <%= item.product.price %><small>€</small>
+                  </td>
+                  <td class="td-number">
 
-                                    <div class="btn-group">
-                                        <button class="btn btn-info btn-sm btn-round btn-dribbble mr-2"> <i class="now-ui-icons ui-1_simple-delete"></i> </button>
-                                          <%= item.quantity %>
-                                        <button class="btn btn-info btn-sm btn-round btn-dribbble ml-2"> <i class="now-ui-icons ui-1_simple-add"></i> </button>
-                                    </div>
-                                </td>
-                                <td class="td-number">
-                                    <%= item.product.price * item.quantity %><small>€</small>
-                                </td>
-                                <td class="td-actions">
-                                    <button type="button" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-neutral">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <% price += (item.product.price * item.quantity) %>
-                          <% end %>
-                            <tr>
-                                <td colspan="3">
-                                </td>
-                                <td class="td-total">
-                                    Total
-                                </td>
-                                <td class="td-price">
-                                    <%= price %><small>€</small>
-                                </td>
-                                <td colspan="3" class="text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info btn-round btn-dribbble">
-                                        Compléter l'achat
-                                        <i class="now-ui-icons arrows-1_minimal-right"></i>
-                                    </button>
-                                </td>
-                                <p><%= link_to "Retour aux produits", products_path, class: 'text-primary' %></p>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                    <div class="btn-group">
+                      <%= link_to line_item_path(item), method: :put do %>
+                        <button class="btn btn-info btn-sm btn-round btn-dribbble mr-2"> <i class="now-ui-icons ui-1_simple-delete"></i> </button>
+                      <% end %>
+                      <%= item.quantity %>
+                      <%= link_to line_item_path(item, :add => true), method: :put do %>
+                        <button class="btn btn-info btn-sm btn-round btn-dribbble ml-2"> <i class="now-ui-icons ui-1_simple-add"></i> </button>
+                      <% end %>
+                    </div>
+                  </td>
+                  <td class="td-number">
+                    <%= (item.product.price * item.quantity).round(2) %><small>€</small>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-neutral">
+                    <%= link_to line_item_path(item), method: :delete, data: { confirm: 'Voulez-vous vraiment retirer ce produit de votre panier ?' } do %>
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    <% end %>
+                    </button>
+                  </td>
+                </tr>
+                <% end %>
+                <tr>
+                  <td colspan="3">
+                  </td>
+                  <td class="td-total">
+                    Total
+                  </td>
+                  <td class="td-price">
+                    <%= @price %><small>€</small>
+                  </td>
+                  <td colspan="3" class="text-right">
+                    <button type="button" rel="tooltip" class="btn btn-info btn-round btn-dribbble">
+                      Compléter l'achat
+                      <i class="now-ui-icons arrows-1_minimal-right"></i>
+                    </button>
+                  </td>
+                  <p><%= link_to "Retour aux produits", products_path, class: 'text-primary' %></p>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
