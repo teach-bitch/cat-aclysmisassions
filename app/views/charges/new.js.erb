@@ -14,7 +14,7 @@ document.getElementById('customButton').addEventListener('click', function(e) {
     name: 'Chat Perlipopette',
     description: 'Cat Paradise',
     currency: 'eur',
-    amount: 2000
+    amount: <%= @amount %>
   });
   e.preventDefault();
 });
@@ -23,3 +23,5 @@ document.getElementById('customButton').addEventListener('click', function(e) {
 window.addEventListener('popstate', function() {
   handler.close();
 });
+
+console.log("I'm executed");
