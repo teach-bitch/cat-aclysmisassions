@@ -1,4 +1,5 @@
 class BasketsController < ApplicationController
+  include BasketsHelper
   before_action :set_basket, only: [:show, :edit, :update, :destroy]
   before_action :set_price, only: [:show]
 
@@ -71,13 +72,5 @@ class BasketsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def basket_params
       params.require(:basket).permit(:quantity)
-    end
-
-    def set_price
-      @price = 0
-      @basket.line_items.each do |item| 
-        @price += (item.product.price * item.quantity)
-      end
-      @price.round(2)
     end
 end
