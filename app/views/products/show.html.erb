@@ -51,14 +51,15 @@
                                     </div>
                                     <div class="card-body">
                                         <p><%= @product.description %></p>
+                                    <% @all_cat_categories %>
                                     </div>
                                     <div class="card-header">
                                     Reference : <%= @product.reference %>
                                     </div>
                                     <div class="card-header">
                                     Categories : 
-                                    <% @product.categories do |cat|%>
-                                    <span class="badge badge-neutral"><% cat.title %></span>
+                                    <% @product.categories.each do |cat| %>
+                                    <span class="badge badge-neutral"><%= cat.title %></span>
                                     <%end%>
                                     </div>
 
