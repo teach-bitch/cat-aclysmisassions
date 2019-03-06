@@ -33,5 +33,4 @@ class ChargesController < ApplicationController
   def set_amount
     @amount = (@price * 100).to_i
   end
-
 end
