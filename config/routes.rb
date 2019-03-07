@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "products#index"
-  get '/home/index'	
+  get '/home/index'
   devise_for :users
 
   resources :line_items, only: [:create, :edit, :update, :destroy, :new]

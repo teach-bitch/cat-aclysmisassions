@@ -23,6 +23,13 @@
 <main>
 
     <div class="wrapper">
+      <p>Bienvenue sur la page d'ajout d'une image pour le Product portant l'id : <%=@product.id%></p>
+      <h3>image actuelle</h3>
+      <%if @product.image.attached?%>
+      <%= image_tag @product.image, alt: 'image' %>
+      <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à ce produit ===</p>
+      <%end%>
 
         <div class="section">
             <div class="container">
@@ -30,7 +37,7 @@
                 <div class="row">
                     <div class="d-flex align-content-stretch flex-wrap">
                         <div class="col-md-6 d-flex align-content-center flex-wrap">
-                            <img class="d-block img-raised align-self-center" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2942.jpg">
+                            <%= image_tag @product.image, alt: 'image' %>
                         </div>
                         <div class="col-md-5 ml-auto mr-auto">
                             <h2 class="title"><%= @product.title %></h2>
@@ -39,7 +46,7 @@
                             <% if @product.quantity.to_i > 0 %>
                             <div class="card-collapse justify-content-start">
                                 <span><%= button_to 'Ajouter au panier', line_items_path(product_id: @product.id), class: 'btn btn-primary' %><i class="now-ui-icons shopping_cart-simple"></i></span>
-                           
+
                             </div>
                             <% else %>
                             <h6>Out of stock</h6>
@@ -56,7 +63,7 @@
                                     Reference : <%= @product.reference %>
                                     </div>
                                     <div class="card-header">
-                                    Categories : 
+                                    Categories :
                                     <% @product.categories do |cat|%>
                                     <span class="badge badge-neutral"><% cat.title %></span>
                                     <%end%>
@@ -79,7 +86,7 @@
                             <div class="card card-product">
                                 <div class="card-image">
                                     <a href="#">
-                                        <img class="img rounded" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2901.jpg" />
+                                        <%= image_tag @product.image, alt: 'image' %>
                                     </a>
                                 </div>
                                 <div class="card-body">
@@ -101,7 +108,7 @@
                             </div>
                         </div>
                     <% end%>
-         <!--  les anciennes cards fake avec les anciennes images     
+         <!--  les anciennes cards fake avec les anciennes images
                     <div class="col-sm-6 col-md-3">
                         <div class="card card-product">
                             <div class="card-image">
@@ -116,14 +123,14 @@
                                 </h5>
 
                                 <div class="card-footer d-flex justify-content-between align-items-center">
-                             
+
                                     <div class="price-container">
                                         <span class="price "><%= @product.price.round(2) %>€</span>
                                     </div><%= products_path %>
                                     <div class="row justify-content-center">
                                         <button class="btn btn-neutral">See Product &nbsp;</button>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -142,14 +149,14 @@
                                 </h5>
 
                                 <div class="card-footer d-flex justify-content-between align-items-center">
-                             
+
                                     <div class="price-container">
                                         <span class="price "><%= @product.price.round(2) %>€</span>
                                     </div>
                                     <div class="row justify-content-center">
                                         <button class="btn btn-neutral">See Product &nbsp;</button>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -168,24 +175,24 @@
                                 </h5>
 
                                 <div class="card-footer d-flex justify-content-between align-items-center">
-                             
+
                                     <div class="price-container">
                                         <span class="price "><%= @product.price.round(2) %>€</span>
                                     </div>
                                     <div class="row justify-content-center">
                                         <button class="btn btn-neutral">See Product &nbsp;</button>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
                     </div>
         -->
                 </div>
-                
+
             </div>
         </div>
-       
+
     </div>
 </main>
 </body>

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   include ProductsHelper
-  
+
 
 
   include ProductsHelper
@@ -18,10 +18,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @all_product = Product.all
-    
+
     set_cats
-    
-    
+
+
     puts "SHOW" * 70
 
   end
@@ -40,8 +40,30 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+
+    puts "*"*60
+    puts "create Product controller"
+    puts params
+    puts "*"*60
+
     respond_to do |format|
       if @product.save
+        puts "*"*60
+        puts "save du product"
+        puts "*"*60
+        @product.image.attach(params[:image])
+        puts "*"*60
+        puts "save de de image"
+        puts "*"*60
+        if @product.image.attached?
+          puts "*"*60
+          puts "image attachée"
+          puts "*"*60
+        else
+          puts "*"*60
+          puts "image pas attachée"
+          puts "*"*60
+        end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -83,6 +105,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :quantity, :reference)
+      params.require(:product).permit(:title, :description, :price, :quantity, :reference, :image)
     end
 end
