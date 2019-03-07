@@ -14,14 +14,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
     @all_product = Product.all
     puts @product.categories
     puts "@product.categories" * 30
     set_cats
-  
-    puts "SHOW" * 30
-
   end
 
   # GET /products/new
@@ -36,7 +33,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.friendly.new(product_params)
 
     respond_to do |format|
       if @product.save
@@ -76,7 +73,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

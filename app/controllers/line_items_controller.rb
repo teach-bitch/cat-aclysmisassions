@@ -25,8 +25,13 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    product = Product.find(params[:product_id])
+    product = Product.friendly.find(params[:product_id])
+    puts "$" * 100
+    puts product.id
+    puts "$" * 100
     @line_item = @current_basket.add_product(product)
+
+
 
     respond_to do |format|
       if @line_item.save

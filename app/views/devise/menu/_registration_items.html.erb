@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= link_to('Modifier mon compte', edit_user_registration_path, class: 'nav-link text-primary dropdown-item') %>
+  <%= link_to('Modifier mon compte', edit_user_registration_path(current_user.slug), class: 'nav-link text-primary dropdown-item') %>
 <% else %>
   <%= link_to("S'inscrire", new_user_registration_path, class: 'nav-link text-primary dropdown-item')  %>
 <% end %>

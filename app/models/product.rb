@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   has_many :line_items, dependent: :nullify
   has_many :product_categories
   has_many :categories, through: :product_categories
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   validates :title,
     presence: true,
