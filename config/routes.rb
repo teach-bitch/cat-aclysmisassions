@@ -9,6 +9,4 @@ Rails.application.routes.draw do
     resources :charges
   resources :categories, only: [:create, :update, :destroy, :show, :index]
   resources :products
-  get 'users/edit', to: 'devise/registrations#edit', as: 'keke'
-  get 'baskets/:id', to: 'baskets#show', as: 'mon_panier'
 end
