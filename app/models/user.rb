@@ -12,6 +12,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :basket
+  has_many :facturations
 
   validates :first_name,
     presence: true,
@@ -27,7 +28,7 @@ class User < ApplicationRecord
 
   validates :username,
     presence: true,
-    length: { in: 2..15 },
+    length: { in: 2..30 },
     uniqueness: { message: "Nom d'utilisateur déjà pris" }
 
 

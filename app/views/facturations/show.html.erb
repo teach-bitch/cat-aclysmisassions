@@ -1,9 +1,69 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @facturation.price %>
-</p>
 
-<%= link_to 'Edit', edit_facturation_path(@facturation) %> |
-<%= link_to 'Back', facturations_path %>
+
+<div class="container mt-5"><br/><br/><br/><br/>
+  <h1>Facture</h1>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <br/>
+    </div>
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-shopping">
+                        <thead>
+                            <th class="text-left">
+                                Produit
+                            </th>
+                            <th class="text-center">
+                                Quantité
+                            </th>
+                            <th class="text-center">
+                              Prix unitaire
+                            </th>
+                            <th class="text-right">
+                                Prix total
+                            </th>
+                        </thead>
+                        <tbody>
+                          <% Basket.find(@facturation.basket_id).line_items.each do |item| %>
+                            <tr id="item_fulldiv_<%= item.id %>">
+                                <td class="td-name">
+                                    <a><%= item.product.title %></a>
+                                    <br />
+                                    <small>Réf : <%= item.product.reference %></small>
+                                </td>
+                                <td class="td-number text-center">
+                                    <%= item.quantity %>
+                                </td>
+                                <td class="td-number text-center">
+                                    <%= item.product.price.round(2) %><small>€</small>
+                                </td>
+                                <td class="td-number">
+                                  <%= (item.product.price * item.quantity).round(2) %>
+                                </td>
+                            </tr>
+                          <% end %>
+                            <tr>
+                                <td class="td-total">
+                                    Total
+                                </td>
+                                <td class="td-price" id="total_price">
+                                    <%= @facturation.price.round(2) %><small>€</small>
+                                </td>
+                                <p>Facture n°<%= @facturation.id %> - <%= User.find(@facturation.user_id).last_name %> <%= User.find(@facturation.user_id).first_name %></p>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

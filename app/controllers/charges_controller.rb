@@ -20,9 +20,19 @@ class ChargesController < ApplicationController
       currency: 'eur',
     })
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
+    if Stripe::CardError != true
+      @billing = Facturation.new(basket_id: @current_basket.id, price: @price, user_id: current_user.id)
+      if @billing.save
+        @current_basket = Basket.create(user_id: current_user.id)
+        session[:basket_id] = @current_basket.id
+      end
+
+      redirect_to facturation_path(@billing.id)
+    end
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
   end
 
   private

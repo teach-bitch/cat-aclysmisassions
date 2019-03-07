@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <div class="main">
+<div class="page-header page-header-small">
+            <div class="page-header-image" data-parallax="true" style="background-image: url(&quot;../assets/index_product_landing_page.jpg&quot;); transform: translate3d(0px, 0px, 0px);">
+            </div>
+            <div class="content-center">
+                <h1 class="title">Plus de 1200 photos de chats à portée de panier.</h1>
+                <div class="text-center">
+                </div>
+            </div>
+        </div>
   <div class="section">
     <div class="container">
-      <h2 class="section-title">Trouvez tout ce dont vous avez besoin</h2>
       <div class="row">
         <div class="col-md-3">
           <div class="collapse-panel">
@@ -64,28 +72,6 @@
                 </div>
               </div>
               <!-- Fin Checkbox 'Marques' -->
-              <!-- Checkbox 'Designer' -->
-              <div class="card card-refine card-plain">
-                <div class="card-header" role="tab" id="headingThree">
-                  <h6 class="mb-0">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Designer
-                      <i class="now-ui-icons arrows-1_minimal-down"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                  <div class="card-body">
-                    <div class="checkbox">
-                      <input id="checkbox9" type="checkbox">
-                      <label for="checkbox9">
-                        All
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Fin Checkbox 'Designer' -->
               <!-- Checkbox 'Catégories' -->
               <div class="card card-refine card-plain">
                 <div class="card-header" role="tab" id="headingfour">
@@ -101,7 +87,7 @@
                     <div class="checkbox">
                       <input id="checkbox_cat" type="checkbox">
                       <label for="checkbox_cat">
-                        Toutes <3
+                        Toutes 
                       </label>
                     </div>
                     <% @categories.each do |category| %>
@@ -119,46 +105,40 @@
             </div>
           </div>
         </div>
+
+
+
         <!-- Carte Produit -->
         <div class="col-md-9">
           <div class="row">
-            <% @products.each do |product| %>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-product card-plain">
-                <div class="card-image">
-                  <a href="/products/<%= product.id %>">
-                    <img src="http://www.kittycatconnection.org/uploads/1/6/8/9/16894946/header_images/1532312571.jpg" alt="..." />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <a href="/products/<%= product.id %>">
-                    <h4 class="card-title"><%= product.title %></h4>
-                  </a>
-                  <div class="card-body">
-                    <div class="price-container pull-left">
-                      <span class="price"><h5><%= product.price %> €</h5></span>
-                    </div>
-                    <% if user_signed_in? %>
-                    <div class="pull-right">
-                      <span><%= button_to 'Ajouter au panier', line_items_path(product_id: product), class: 'btn btn-dribbble btn-round' %></span>
-                    </div><br/>
-                    <% else %>
-                    <div class="pull-right">
-                      <span><%= button_to 'Ajouter au panier', new_user_session_path, class: 'btn btn-dribbble btn-round' %></span>
-                    </div><br/>
-                    <% end %>
+          <% @products.each do |product|%>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-product">
+              <div class="card-image">
+                <a href="/products/<%= product.id %>">
+                  <img class="img rounded" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2901.jpg" />
+                </a>
+              </div>
+              <div class="card-body">
+                <h6 class="category"><%= product.brand %></h6>
+                <h5 class="card-title">
+                  <div class="card-link "><%= product.title %></div>
+                </h5>
+                <div class="card-footer ">
+                  <div class="price-container">
+                    <span class="price "><%= product.price %>€</span>
                   </div>
-                  <div class="card-footer mt-3">
-                    <p class="card-description">
-                      <%= product.description %>
-                    </p>
+                  <div class="row">
+                    <span><%= button_to 'Voir le produit', product_path(product), class: 'btn btn-neutral', method: :get %></span>
                   </div>
                 </div>
               </div>
             </div>
-            <% end %>
+          </div>
+          <% end%>
           </div>
         </div>
+        
         <!-- Fin de la Carte Produit -->
       </div>
     </div>

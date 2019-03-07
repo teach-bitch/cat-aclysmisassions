@@ -55,10 +55,11 @@
         <h3 class="title text-center">You may also be interested in:</h3>
         <div class="row">
           <% @the_cats.sample(4).each do |product|%>
+          
           <div class="col-sm-6 col-md-3">
             <div class="card card-product">
               <div class="card-image">
-                <a href="#">
+                <a href="/products/<%= product.id %>">
                   <img class="img rounded" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2901.jpg" />
                 </a>
               </div>
@@ -67,11 +68,11 @@
                 <h5 class="card-title">
                   <div class="card-link "><%= product.title %></div>
                 </h5>
-                <div class="card-footer d-flex justify-content-between align-items-center">
+                <div class="card-footer ">
                   <div class="price-container">
                     <span class="price "><%= product.price %>€</span>
                   </div>
-                  <div class="row justify-content-center">
+                  <div class="row">
                     <span><%= button_to 'Voir le produit', product_path(product), class: 'btn btn-neutral', method: :get %></span>
                   </div>
                 </div>
@@ -80,6 +81,7 @@
           </div>
           <% end%>
           <!--  les anciennes cards fake avec les anciennes images
+          
           <img class="img rounded" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2903.jpg" />
           <img class="img rounded" src="http://www.totems-scouts.be/pics/totems/1394650360_sphynx.jpg" />
           <img class="img rounded" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2902.jpg" />

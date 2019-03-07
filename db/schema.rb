@@ -51,10 +51,23 @@ ActiveRecord::Schema.define(version: 2019_03_07_165735) do
 
   create_table "facturations", force: :cascade do |t|
     t.bigint "basket_id"
-    t.integer "price"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["basket_id"], name: "index_facturations_on_basket_id"
+    t.index ["user_id"], name: "index_facturations_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -120,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_165735) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "facturations", "users"
   add_foreign_key "line_items", "baskets"
   add_foreign_key "line_items", "products"
 end
