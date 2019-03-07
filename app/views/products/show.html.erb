@@ -23,13 +23,6 @@
 <main>
 
     <div class="wrapper">
-      <p>Bienvenue sur la page d'ajout d'une image pour le Product portant l'id : <%=@product.id%></p>
-      <h3>image actuelle</h3>
-      <%if @product.image.attached?%>
-      <%= image_tag @product.image, alt: 'image' %>
-      <%else%>
-      <p>=== Il n'y a pas encore d'avatar lié à ce produit ===</p>
-      <%end%>
 
         <div class="section">
             <div class="container">
@@ -37,7 +30,12 @@
                 <div class="row">
                     <div class="d-flex align-content-stretch flex-wrap">
                         <div class="col-md-6 d-flex align-content-center flex-wrap">
+                          <%if @product.image.attached?%>
                             <%= image_tag @product.image, alt: 'image' %>
+                            <%else%>
+                            <img class="d-block img-raised align-self-center" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2942.jpg">
+                            <%end%>
+
                         </div>
                         <div class="col-md-5 ml-auto mr-auto">
                             <h2 class="title"><%= @product.title %></h2>
@@ -77,6 +75,17 @@
 
             </div>
         </div>
+        <%if @product.image.attached?%>
+        <p>=== Il y a une image lié à ce produit ===</p>
+        <%else%>
+        <p>=== Il n'y a pas encore d'avatar lié à ce produit ===</p>
+        <%end%>
+        <h3>Changer d'image ?</h3>
+        <%= form_tag product_images_path(@product), multipart: true do %>
+        <%= file_field_tag :image %>
+        <%= submit_tag "changer l'image" %>
+        <% end %>
+
         <div class="section related-products" data-background-color="black" >
             <div class="container">
                 <h3 class="title text-center">You may also be interested in:</h3>
@@ -86,7 +95,7 @@
                             <div class="card card-product">
                                 <div class="card-image">
                                     <a href="#">
-                                        <%= image_tag @product.image, alt: 'image' %>
+                                        <img class="d-block img-raised align-self-center" src="https://static.wamiz.fr/images/animaux/chats/large/sphynx-2942.jpg">
                                     </a>
                                 </div>
                                 <div class="card-body">

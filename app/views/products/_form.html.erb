@@ -1,21 +1,3 @@
-<%= form_tag products_path, multipart: true do %>
-  <p><b>title</b> </p></br>
-  <%= text_field_tag :title %></br>
-  <p><b>description</b></p></br>
-  <%= text_area_tag :description %></br>
-  <p><b>price</b></p></br>
-  <%= text_field_tag :price %></br>
-  <p><b>quantity</b></p></br>
-  <%= number_field_tag :quantity %></br>
-  <p><b>reference</b></p></br>
-  <%= text_field_tag :reference %></br>
-  <p><b>image</b></p></br>
-  <%= file_field_tag :image %></br>
-  <%= submit_tag "creer le produit" %>
-<% end %>
-
-
-
 
 
 <%= form_with(model: product, local: true) do |form| %>
@@ -54,11 +36,6 @@
   <div class="field">
     <%= form.label :reference %>
     <%= form.text_field :reference %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
   </div>
 
   <div class="actions">

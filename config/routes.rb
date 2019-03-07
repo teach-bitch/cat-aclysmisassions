@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   resources :facturations, except: [:destroy ,:new]
   resources :baskets, except: [:index ,:new]
   resources :categories
-  resources :products
+  resources :products do
+    resources :images, only: [:create]
+  end
+  
 end

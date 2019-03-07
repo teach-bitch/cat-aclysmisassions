@@ -51,10 +51,7 @@ class ProductsController < ApplicationController
         puts "*"*60
         puts "save du product"
         puts "*"*60
-        @product.image.attach(params[:image])
-        puts "*"*60
-        puts "save de de image"
-        puts "*"*60
+
         if @product.image.attached?
           puts "*"*60
           puts "image attachée"
@@ -105,6 +102,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :quantity, :reference, :image)
+      params.require(:product).permit(:title, :description, :price, :quantity, :reference)
     end
 end
