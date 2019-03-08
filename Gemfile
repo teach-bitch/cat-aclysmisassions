@@ -15,7 +15,7 @@ gem 'devise'
 gem 'table_print'
 gem 'jquery-rails'
 gem 'stripe'
-gem 'dotenv-rails', groups: [:development, :test]
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
