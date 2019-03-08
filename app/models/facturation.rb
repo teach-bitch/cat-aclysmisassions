@@ -1,6 +1,6 @@
 class Facturation < ApplicationRecord
-  # after_create :bill_send
-  # after_create :admin_bill_send
+ after_create :bill_send
+  after_create :admin_bill_send
   belongs_to :basket
   belongs_to :user
 
