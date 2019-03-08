@@ -1,24 +1,50 @@
-# README
+![](https://media0.giphy.com/media/2zeji2UedvZzvIZ45N/giphy.gif?cid=3640f6095c4a8a4d6b6958366767066f)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# CHAT PERLIPOPETTE
 
-Things you may want to cover:
+Alexandre Gasior
+Benjamin Camino
+Frédéric Boursier
+Valentin Cluzan
+Cynthia @Yacinth
+William @Willyspa
 
-* Ruby version
+# Got to Heroku website
 
-* System dependencies
+https://chat-perlipopette.herokuapp.com/products
 
-* Configuration
+# Or do like always with this steps :
 
-* Database creation
+## Git Clone
 
-* Database initialization
+-   Aquerir le repository en local avec clef SSH
 
-* How to run the test suite
+```ruby
+$ git@github.com:teach-bitch/cat-aclysmisassions.git
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Bundle Install
 
-* Deployment instructions
+-   Executer un bundle install pour pouvoir utiliser les gems du Gemfile
 
-* ...
+```ruby
+$ bundle install
+```
+
+## create Database, migration and feed bdd
+
+```ruby
+$ rails db:create db:migrate db:seed
+```
+
+## Run server
+
+```ruby
+$ rails server
+```
+
+## Got to url and enjoy
+
+http://localhost:3000/
+
+### A tout de suite les correcteurs <3
